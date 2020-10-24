@@ -2,7 +2,7 @@ plugin: aws_ec2
 regions:
   - "us-east-1"
 filters:
-  tag:app-stack-name: APP_STACK_NAME
+  tag:app-stack-name: Spring-Petclinic-App-QA-
   tag:environment: qa
 keyed_groups:
   - key: tags['app-stack-name']
