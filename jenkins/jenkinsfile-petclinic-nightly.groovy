@@ -3,12 +3,12 @@ pipeline {
     environment {
         PATH=sh(script:"echo $PATH:/usr/local/bin", returnStdout:true).trim()
         APP_NAME="petclinic"
-        APP_STACK_NAME="Call-${APP_NAME}-app-dev-${BUILD_NUMBER}"
-        APP_REPO_NAME="clarusway-repo/${APP_NAME}-app-dev"
+        APP_STACK_NAME="Spring-${APP_NAME}-app-dev-${BUILD_NUMBER}"
+        APP_REPO_NAME="spring-repo/${APP_NAME}-app-dev"
         AWS_ACCOUNT_ID=sh(script:'export PATH="$PATH:/usr/local/bin" && aws sts get-caller-identity --query Account --output text', returnStdout:true).trim()
         AWS_REGION="us-east-1"
         ECR_REGISTRY="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
-        CFN_KEYPAIR="call-${APP_NAME}-dev-${BUILD_NUMBER}.key"
+        CFN_KEYPAIR="spring-${APP_NAME}-dev-${BUILD_NUMBER}.key"
         CFN_TEMPLATE="./infrastructure/dev-docker-swarm-infrastructure-cfn-template.yml"
         ANSIBLE_PRIVATE_KEY_FILE="${WORKSPACE}/${CFN_KEYPAIR}"
         ANSIBLE_HOST_KEY_CHECKING="False"
